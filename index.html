@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DPDP Breach Response Timer — Mohd Faiz | Advocate & Data Privacy Law</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ─── Reset ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ─── Tokens ─────────────────────────────────────────── */
+:root{
+  --bg:       #fafafa;
+  --surface:  #ffffff;
+  --bd:       #e6e6e6;
+  --bd2:      #cccccc;
+  --t1:       #111111;
+  --t2:       #4f4f4f;
+  --t3:       #8a8a8a;
+  --t4:       #c2c2c2;
+
+  --red:      #b91c1c;
+  --red-bg:   rgba(185,28,28,.05);
+  --amber:    #b45309;
+  --amber-bg: rgba(180,83,9,.05);
+  --green:    #15803d;
+  --green-bg: rgba(21,128,61,.05);
+  --purple:   #6b21a8;
+  --purple-bg:rgba(107,33,168,.05);
+  --blue:     #1d4ed8;
+  --blue-bg:  rgba(29,78,216,.05);
+
+  --r:  4px;
+  --r2: 6px;
+}
+[data-theme=dark]{
+  --bg:       #0a0a0a;
+  --surface:  #121212;
+  --bd:       #202020;
+  --bd2:      #303030;
+  --t1:       #eeeeee;
+  --t2:       #9e9e9e;
+  --t3:       #666666;
+  --t4:       #383838;
+  --red:      #ef4444;
+  --red-bg:   rgba(239,68,68,.08);
+  --amber:    #f59e0b;
+  --amber-bg: rgba(245,158,11,.08);
+  --green:    #22c55e;
+  --green-bg: rgba(34,197,94,.08);
+  --purple:   #a855f7;
+  --purple-bg:rgba(168,85,247,.08);
+  --blue:     #3b82f6;
+  --blue-bg:  rgba(59,130,246,.08);
+}
+
+/* ─── Base ───────────────────────────────────────────── */
+html{font-size:16px;scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--t1);
+  line-height:1.55;
+  min-height:100vh;
+  transition:background .2s,color .2s;
+}
+
+/* ─── Layout ─────────────────────────────────────────── */
+.wrap{max-width:820px;margin:0 auto;padding:0 32px}
+@media(max-width:600px){.wrap{padding:0 20px}}
+
+/* ─── Header ─────────────────────────────────────────── */
+header{
+  background:var(--bg);
+  border-bottom:1px solid var(--bd);
+  position:sticky;top:0;z-index:100;
+  transition:background .2s,border-color .2s;
+}
+.hinner{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  height:54px;
+  max-width:820px;margin:0 auto;padding:0 32px;
+}
+@media(max-width:600px){.hinner{padding:0 20px}}
+
+.wordmark{
+  display:flex;align-items:center;gap:10px;
+}
+.wm-icon{
+  width:26px;height:26px;
+  background:var(--t1);
+  border-radius:4px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:background .2s;
+}
+.wm-icon svg{width:14px;height:14px}
+.wm-name{font-size:13px;font-weight:600;color:var(--t1);letter-spacing:-.01em}
+.wm-sub{
+  font-size:11px;color:var(--t3);
+  padding-left:10px;margin-left:10px;
+  border-left:1px solid var(--bd);
+}
+@media(max-width:540px){.wm-sub{display:none}}
+
+.htools{display:flex;align-items:center;gap:4px}
+.ht-btn{
+  width:32px;height:32px;
+  border:none;background:transparent;
+  border-radius:var(--r);
+  cursor:pointer;
+  color:var(--t3);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s,color .15s;
+}
+.ht-btn:hover{background:var(--bd);color:var(--t1)}
+.ht-btn svg{width:14px;height:14px;stroke-width:1.75}
+.ht-divider{width:1px;height:18px;background:var(--bd);margin:0 2px}
+
+/* ─── Page Head ──────────────────────────────────────── */
+main{padding:44px 0 96px}
+.pg{margin-bottom:40px}
+.pg h1{
+  font-size:23px;font-weight:700;
+  letter-spacing:-.03em;color:var(--t1);
+  margin-bottom:6px;
+}
+.pg p{font-size:13.5px;color:var(--t2);line-height:1.6;max-width:680px}
+
+/* ─── Section ────────────────────────────────────────── */
+.sec{margin-bottom:38px}
+.sec-h{
+  display:flex;align-items:baseline;justify-content:space-between;
+  margin-bottom:12px;
+}
+.sec-title{
+  font-size:11.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:var(--t3);
+}
+.sec-cite{font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace}
+
+/* ─── Form card ──────────────────────────────────────── */
+.form-wrap{
+  background:var(--surface);
+  border:1px solid var(--bd);
+  border-radius:var(--r2);
+  padding:22px;
+}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.fg{grid-template-columns:1fr}}
+.f{display:flex;flex-direction:column;gap:5px}
+.fc{grid-column:1/-1}
+label.lbl{font-size:11.5px;font-weight:500;color:var(--t2)}
+label.lbl span{font-weight:400;color:var(--t3)}
+
+input[type=text],
+input[type=datetime-local],
+select{
+  height:36px;
+  border:1px solid var(--bd);
+  border-radius:var(--r);
+  background:var(--bg);
+  color:var(--t1);
+  font-size:13px;
+  font-family:inherit;
+  padding:0 11px;
+  width:100%;
+  outline:none;
+  -webkit-appearance:none;
+  transition:border-color .15s,box-shadow .15s;
+}
+input:focus,select:focus{
+  border-color:var(--t1);
+  box-shadow:0 0 0 3px rgba(0,0,0,.05);
+}
+[data-theme=dark] input:focus,[data-theme=dark] select:focus{
+  box-shadow:0 0 0 3px rgba(255,255,255,.06);
+}
+input::placeholder{color:var(--t4)}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 10px center;
+  padding-right:32px;cursor:pointer;
+}
+[data-theme=dark] input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:invert(1)}
+
+/* ─── Categories grid ────────────────────────────────── */
+.cat-wrap{
+  border:1px solid var(--bd);
+  border-radius:var(--r);
+  background:var(--bg);
+  padding:10px;
+}
+.cat-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+}
+@media(max-width:560px){.cat-grid{grid-template-columns:1fr 1fr}}
+.cat-row{
+  display:flex;align-items:flex-start;gap:8px;
+  padding:6px 8px;border-radius:var(--r);
+  cursor:pointer;
+  transition:background .12s;
+}
+.cat-row:hover{background:var(--bd)}
+.cat-row input[type=checkbox]{
+  width:13px;height:13px;flex-shrink:0;margin-top:2px;
+  accent-color:var(--t1);cursor:pointer;
+}
+.cat-name{font-size:12px;color:var(--t2);line-height:1.35}
+.cat-flag{
+  display:block;margin-top:1px;
+  font-size:9.5px;font-weight:600;letter-spacing:.03em;
+  color:var(--red);
+}
+
+/* ─── Actions ────────────────────────────────────────── */
+.actions{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:5px;
+  height:34px;padding:0 14px;
+  border-radius:var(--r);
+  font-size:13px;font-weight:500;
+  font-family:inherit;
+  cursor:pointer;
+  border:1px solid transparent;
+  letter-spacing:-.01em;
+  transition:opacity .12s,background .12s,color .12s,border-color .12s;
+}
+.btn svg{width:12px;height:12px;flex-shrink:0}
+.btn-primary{
+  background:var(--t1);color:var(--bg);
+  border-color:var(--t1);
+}
+.btn-primary:hover{opacity:.85}
+.btn-secondary{
+  background:var(--surface);color:var(--t2);
+  border-color:var(--bd);
+}
+.btn-secondary:hover{background:var(--bd);color:var(--t1)}
+.btn-ghost{
+  background:transparent;color:var(--t3);
+  border-color:transparent;
+}
+.btn-ghost:hover{background:var(--bd);color:var(--t1)}
+.btn-xs{height:28px;padding:0 10px;font-size:12px}
+.btn-email-dp{
+  background:var(--green-bg);color:var(--green);
+  border-color:rgba(21,128,61,.2);
+}
+.btn-email-dp:hover{opacity:.85}
+.btn-email-board{
+  background:var(--blue-bg);color:var(--blue);
+  border-color:rgba(29,78,216,.2);
+}
+.btn-email-board:hover{opacity:.85}
+
+/* ─── Status strip ───────────────────────────────────── */
+.sts-strip{
+  display:none;
+  border-radius:var(--r2);
+  padding:12px 16px;
+  margin-bottom:38px;
+  border:1px solid var(--bd);
+}
+.sts-strip.show{display:flex;align-items:center;gap:10px}
+.sts-strip.s-live{border-color:rgba(29,78,216,.25);background:var(--blue-bg)}
+.sts-strip.s-over{border-color:rgba(185,28,28,.3);background:var(--red-bg)}
+.sts-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--blue);flex-shrink:0;
+  animation:pulse 2s infinite;
+}
+.sts-strip.s-over .sts-dot{background:var(--red)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.sts-label{font-size:13px;font-weight:600;color:var(--t1)}
+.sts-sub{font-size:12px;color:var(--t2);margin-top:1px}
+
+/* ─── Severity ───────────────────────────────────────── */
+.sev-wrap{
+  border:1px solid var(--bd);
+  border-radius:var(--r2);
+  padding:18px 20px;
+  margin-bottom:38px;
+  display:none;
+  transition:border-color .3s,background .3s;
+}
+.sev-wrap.show{display:block}
+.sev-wrap.L{border-color:rgba(21,128,61,.25);background:var(--green-bg)}
+.sev-wrap.M{border-color:rgba(180,83,9,.25);background:var(--amber-bg)}
+.sev-wrap.H{border-color:rgba(185,28,28,.25);background:var(--red-bg)}
+.sev-wrap.C{border-color:rgba(107,33,168,.25);background:var(--purple-bg)}
+.sev-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sev-label-sm{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--t3)}
+.sev-pill{
+  font-size:11px;font-weight:700;
+  padding:3px 10px;border-radius:20px;
+  letter-spacing:.03em;
+}
+.sev-pill.L{background:rgba(21,128,61,.15);color:var(--green)}
+.sev-pill.M{background:rgba(180,83,9,.15); color:var(--amber)}
+.sev-pill.H{background:rgba(185,28,28,.15);color:var(--red)}
+.sev-pill.C{background:rgba(107,33,168,.15);color:var(--purple)}
+.sev-bar-bg{height:4px;background:var(--bd2);border-radius:2px;overflow:hidden;margin-bottom:12px}
+.sev-bar-fg{height:100%;border-radius:2px;transition:width .5s ease,background .5s}
+.sev-tags{display:flex;flex-wrap:wrap;gap:5px}
+.sev-tag{
+  font-size:11px;
+  padding:2px 8px;
+  border-radius:20px;
+  background:var(--surface);
+  border:1px solid var(--bd);
+  color:var(--t2);
+}
+
+/* ─── Statutory Section Block (Full Provisions) ─────── */
+.stat-box{
+  background:var(--surface);
+  border:1px solid var(--bd);
+  border-left:3px solid var(--t1);
+  border-radius:var(--r);
+  padding:14px 16px;
+  margin-bottom:14px;
+}
+.stat-box-title{
+  font-size:12px;font-weight:700;
+  color:var(--t1);letter-spacing:-.01em;
+  margin-bottom:4px;
+}
+.stat-box-text{
+  font-size:12px;color:var(--t2);line-height:1.65;
+  font-style:normal;
+}
+.stat-box-quote{
+  display:block;
+  margin-top:6px;
+  padding:8px 12px;
+  background:var(--bg);
+  border-radius:3px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:11.5px;
+  color:var(--t1);
+  line-height:1.6;
+  border:1px solid var(--bd);
+}
+
+/* ─── Deadline cards ─────────────────────────────────── */
+.dl-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+@media(max-width:560px){.dl-grid{grid-template-columns:1fr}}
+.dl-card{
+  background:var(--surface);
+  border:1px solid var(--bd);
+  border-radius:var(--r2);
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .3s;
+}
+.dl-card::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--bd);
+  transition:background .3s;
+}
+.dl-card.safe::before  {background:var(--green)}
+.dl-card.warn::before  {background:var(--amber)}
+.dl-card.urgent::before{background:var(--red)}
+.dl-card.over::before  {background:var(--red)}
+.dl-card.safe  {border-color:rgba(21,128,61,.2)}
+.dl-card.warn  {border-color:rgba(180,83,9,.2)}
+.dl-card.urgent{border-color:rgba(185,28,28,.3)}
+.dl-card.over  {border-color:rgba(185,28,28,.3);background:var(--red-bg)}
+
+.dl-seq{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--t4);margin-bottom:6px}
+.dl-title{font-size:13.5px;font-weight:600;color:var(--t1);margin-bottom:2px}
+.dl-rule{font-size:11px;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-bottom:14px}
+.dl-count{
+  font-size:32px;font-weight:700;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.04em;
+  color:var(--bd2);
+  margin-bottom:4px;
+  transition:color .3s;
+  font-family:'JetBrains Mono',monospace;
+}
+.dl-count.safe  {color:var(--green)}
+.dl-count.warn  {color:var(--amber)}
+.dl-count.urgent{color:var(--red)}
+.dl-count.over  {color:var(--red)}
+.dl-by{font-size:11px;color:var(--t3)}
+.dl-stat-note{
+  margin-top:10px;padding-top:10px;
+  border-top:1px solid var(--bd);
+  font-size:11px;color:var(--t3);line-height:1.5;
+}
+
+/* Callout */
+.callout{
+  display:flex;gap:12px;
+  padding:12px 16px;
+  border:1px solid var(--bd);
+  border-radius:var(--r);
+  background:var(--surface);
+  margin-bottom:38px;
+}
+.callout-icon{font-size:13px;flex-shrink:0;margin-top:1px}
+.callout-text{font-size:12px;color:var(--t2);line-height:1.65}
+.callout-text strong{color:var(--t1);font-weight:600}
+
+/* ─── Accordion & Penalty Table ──────────────────────── */
+.accordion{
+  border:1px solid var(--bd);
+  border-radius:var(--r2);
+  overflow:hidden;
+  margin-bottom:14px;
+}
+.acc-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;
+  cursor:pointer;
+  background:var(--surface);
+  transition:background .12s;
+  user-select:none;
+}
+.acc-head:hover{background:var(--bg)}
+.acc-h-title{font-size:13px;font-weight:600;color:var(--t1)}
+.acc-h-sub{font-size:11px;color:var(--t3);margin-top:2px}
+.chevron{
+  width:15px;height:15px;color:var(--t3);
+  transition:transform .22s;flex-shrink:0;
+}
+.acc-head.open .chevron{transform:rotate(180deg)}
+.acc-body{
+  max-height:0;overflow:hidden;
+  border-top:0 solid var(--bd);
+  transition:max-height .35s ease;
+}
+.acc-body.open{max-height:1600px;border-top-width:1px}
+
+/* Penalty table */
+.pen-table{width:100%;border-collapse:collapse;background:var(--surface)}
+.pen-table th{
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--t3);padding:10px 18px;text-align:left;
+  border-bottom:1px solid var(--bd);background:var(--bg);
+}
+.pen-table td{
+  font-size:12px;color:var(--t2);padding:11px 18px;
+  border-bottom:1px solid var(--bd);line-height:1.5;vertical-align:top;
+}
+.pen-table tr:last-child td{border-bottom:none}
+.pen-table td.pen-sl{font-weight:600;color:var(--t3);width:40px;font-family:'JetBrains Mono',monospace}
+.pen-table td.pen-sec{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t1);white-space:nowrap}
+.pen-table td.pen-amount{font-weight:700;color:var(--red);white-space:nowrap;font-size:12.5px}
+.pen-table tr:hover td{background:var(--bg)}
+
+.s33-factors{
+  padding:16px 18px;
+  background:var(--bg);
+  border-top:1px solid var(--bd);
+}
+.s33-title{
+  font-size:11.5px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--t1);
+  margin-bottom:6px;
+}
+.s33-list{
+  margin-left:18px;font-size:12px;color:var(--t2);line-height:1.7;
+}
+
+/* ─── Progress ───────────────────────────────────────── */
+.prog{margin-bottom:14px}
+.prog-bar{height:2px;background:var(--bd);border-radius:1px;overflow:hidden}
+.prog-fill{height:100%;background:var(--t1);border-radius:1px;width:0%;transition:width .4s ease}
+.prog-lbl{font-size:11px;color:var(--t3);margin-top:6px}
+
+/* ─── Checklist ──────────────────────────────────────── */
+.cl{
+  border:1px solid var(--bd);
+  border-radius:var(--r2);
+  overflow:hidden;
+  background:var(--surface);
+}
+.cl-row{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 18px;
+  border-bottom:1px solid var(--bd);
+  cursor:pointer;
+  transition:background .12s;
+  user-select:none;
+}
+.cl-row:last-child{border-bottom:none}
+.cl-row:hover{background:var(--bg)}
+.cl-row.done{background:var(--bg)}
+.cl-box{
+  width:17px;height:17px;flex-shrink:0;margin-top:2px;
+  border:1.5px solid var(--bd2);border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.cl-row.done .cl-box{background:var(--t1);border-color:var(--t1)}
+.cl-box svg{display:none;width:10px;height:10px;stroke:var(--bg);stroke-width:2.5}
+.cl-row.done .cl-box svg{display:block}
+.cl-body{flex:1}
+.cl-title{font-size:13px;font-weight:600;color:var(--t1);margin-bottom:3px;transition:color .15s}
+.cl-row.done .cl-title{color:var(--t3);text-decoration:line-through;text-decoration-color:var(--t4)}
+.cl-desc{font-size:12px;color:var(--t2);line-height:1.6}
+.cl-prov{
+  margin-top:6px;padding:6px 10px;
+  background:var(--bg);border-radius:3px;
+  border:1px solid var(--bd);
+  font-size:11px;color:var(--t2);line-height:1.5;
+  font-family:'JetBrains Mono',monospace;
+}
+.cl-meta{display:flex;align-items:center;flex-wrap:wrap;gap:5px;margin-top:7px}
+.tag{
+  font-size:10px;font-weight:600;letter-spacing:.03em;
+  padding:2px 7px;border-radius:3px;
+  background:var(--bg);border:1px solid var(--bd);color:var(--t3);
+  font-family:'JetBrains Mono',monospace;
+}
+.cl-ts{font-size:11px;color:var(--t3)}
+
+/* ─── History ────────────────────────────────────────── */
+.hist-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:11px 16px;
+  border:1px solid var(--bd);
+  border-radius:var(--r2);
+  background:var(--surface);
+  margin-bottom:12px;
+}
+.hist-count{font-size:13px;color:var(--t2)}
+.hist-count strong{color:var(--t1);font-weight:600}
+.hist-list{
+  border:1px solid var(--bd);border-radius:var(--r2);
+  overflow:hidden;background:var(--surface);
+  display:none;
+}
+.hist-list.open{display:block}
+.hist-row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:12px 18px;border-bottom:1px solid var(--bd);
+  cursor:pointer;transition:background .12s;
+}
+.hist-row:last-child{border-bottom:none}
+.hist-row:hover{background:var(--bg)}
+.hist-name{font-size:13px;font-weight:500;color:var(--t1)}
+.hist-meta{font-size:11px;color:var(--t3);margin-top:2px}
+.hist-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.h-pill{
+  font-size:10px;font-weight:700;
+  padding:2px 8px;border-radius:20px;
+}
+.h-pill.L{background:rgba(21,128,61,.12);color:var(--green)}
+.h-pill.M{background:rgba(180,83,9,.12); color:var(--amber)}
+.h-pill.H{background:rgba(185,28,28,.12);color:var(--red)}
+.h-pill.C{background:rgba(107,33,168,.12);color:var(--purple)}
+.h-del{
+  width:22px;height:22px;
+  border:1px solid var(--bd);background:transparent;
+  border-radius:var(--r);color:var(--t3);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .12s;
+}
+.h-del:hover{background:var(--red-bg);color:var(--red);border-color:rgba(185,28,28,.3)}
+.h-del svg{width:10px;height:10px}
+.hist-empty{padding:24px;text-align:center;font-size:13px;color:var(--t3)}
+
+/* ─── Notices ────────────────────────────────────────── */
+.notice{
+  border:1px solid var(--bd);border-radius:var(--r2);
+  overflow:hidden;margin-bottom:12px;
+  background:var(--surface);
+}
+.notice-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;cursor:pointer;transition:background .12s;user-select:none;
+}
+.notice-head:hover{background:var(--bg)}
+.n-title{font-size:13.5px;font-weight:600;color:var(--t1)}
+.n-sub{font-size:11px;color:var(--t3);margin-top:2px;font-family:'JetBrains Mono',monospace}
+.notice-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.notice-body.open{max-height:850px;border-top:1px solid var(--bd)}
+.notice-text{
+  padding:18px 20px;
+  font-size:12px;line-height:1.9;color:var(--t2);
+  white-space:pre-wrap;
+  font-family:'JetBrains Mono',monospace;
+  background:var(--bg);
+  overflow-y:auto;max-height:380px;
+}
+.notice-foot{
+  padding:10px 18px;border-top:1px solid var(--bd);
+  display:flex;gap:8px;flex-wrap:wrap;
+  background:var(--surface);
+}
+
+/* ─── Toast ──────────────────────────────────────────── */
+.toast{
+  position:fixed;bottom:24px;right:24px;
+  background:var(--t1);color:var(--bg);
+  padding:9px 16px;border-radius:var(--r);
+  font-size:12.5px;font-weight:500;
+  opacity:0;transform:translateY(5px);
+  transition:all .2s;pointer-events:none;z-index:999;
+}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* ─── Print ──────────────────────────────────────────── */
+@media print{
+  header,footer,.actions,.notice-foot,.htools,.hist-bar,.ht-btn{display:none!important}
+  .sts-strip.show,.sev-wrap.show{display:flex!important}
+  body{background:#fff!important;color:#000!important}
+  .acc-body{max-height:none!important;border-top-width:1px}
+  .notice-body{max-height:none!important;border-top-width:1px}
+  .notice-text{font-size:11px;line-height:1.75;background:#f8f8f8!important}
+  main{padding:16px 0!important}
+}
+
+/* ─── Footer ─────────────────────────────────────────── */
+footer{border-top:1px solid var(--bd);padding:26px 0}
+footer .wrap{
+  display:flex;align-items:flex-start;
+  justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.f-name{font-size:13px;font-weight:600;color:var(--t1)}
+.f-role{font-size:12px;color:var(--t2);margin-top:2px}
+.f-disc{font-size:11px;color:var(--t3);margin-top:6px;max-width:520px;line-height:1.5}
+.f-links{display:flex;gap:16px;align-items:center;flex-shrink:0}
+.f-links a{font-size:12px;color:var(--t3);text-decoration:none;transition:color .15s}
+.f-links a:hover{color:var(--t1)}
+</style>
+</head>
+<body data-theme="light">
+
+<!-- HEADER -->
+<header>
+  <div class="hinner">
+    <div class="wordmark">
+      <div class="wm-icon">
+        <svg viewBox="0 0 20 20" fill="white">
+          <path d="M10 2L3 5v5c0 4.4 3 8.5 7 9.5 4-1 7-5.1 7-9.5V5L10 2z"/>
+        </svg>
+      </div>
+      <span class="wm-name">DPDP Breach Response</span>
+      <span class="wm-sub">The Digital Personal Data Protection Act, 2023 (No. 22 of 2023)</span>
+    </div>
+    <div class="htools">
+      <button class="ht-btn" onclick="printReport()" title="Print / Export PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"/>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+          <rect x="6" y="14" width="12" height="8"/>
+        </svg>
+      </button>
+      <div class="ht-divider"></div>
+      <button class="ht-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle light / dark">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
+      <button class="ht-btn" onclick="resetAll()" title="Clear all — start fresh">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="1 4 1 10 7 10"/>
+          <path d="M3.51 15a9 9 0 1 0 .49-4.95"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <!-- Page heading -->
+  <div class="pg">
+    <h1>Breach Response Timer &amp; Incident Workflow</h1>
+    <p>Operationalizing mandatory obligations of Data Fiduciaries under <strong>Section 8(6)</strong> of the Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023) and <strong>Rule 7</strong> of the DPDP Rules.</p>
+  </div>
+
+  <!-- 1. INCIDENT FORM -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-title">Incident Details</span>
+      <span class="sec-cite">Section 8(6)</span>
+    </div>
+    <div class="form-wrap">
+      <div class="fg">
+
+        <div class="f fc">
+          <label class="lbl" for="orgName">Organisation / Data Fiduciary <span>[Section 2(i)]</span></label>
+          <input type="text" id="orgName" placeholder="e.g. Acme Technologies Pvt. Ltd.">
+        </div>
+
+        <div class="f">
+          <label class="lbl" for="breachType">Type of Personal Data Breach <span>[Section 2(u)]</span></label>
+          <select id="breachType">
+            <option value="">— Select breach type —</option>
+            <option value="Unauthorised Processing">Unauthorised Processing / Hacking</option>
+            <option value="Ransomware Attack">Ransomware / Extortion Incident</option>
+            <option value="Accidental Disclosure">Accidental Disclosure / Exposure</option>
+            <option value="Unauthorised Acquisition">Unauthorised Acquisition / Exfiltration</option>
+            <option value="Unauthorised Alteration">Unauthorised Alteration of Data</option>
+            <option value="Unauthorised Destruction">Unauthorised Destruction / Erasure</option>
+            <option value="Loss of Access">Loss of Access Compromising Availability</option>
+            <option value="Third-Party Processor Breach">Data Processor Default [Section 8(2)]</option>
+            <option value="Insider Threat">Insider Misuse / Malicious Access</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="f">
+          <label class="lbl" for="discoveryTime">Date & Time of Discovery</label>
+          <input type="datetime-local" id="discoveryTime">
+        </div>
+
+        <div class="f fc">
+          <label class="lbl" for="breachDesc">Brief Description of the Incident <span>[Compromise of confidentiality, integrity or availability]</span></label>
+          <input type="text" id="breachDesc" placeholder="e.g. Unauthorised access to cloud customer database — approx. 12,000 records exposed via unsecured API endpoint">
+        </div>
+
+        <div class="f">
+          <label class="lbl" for="dpCount">Estimated No. of Data Principals Affected <span>[Section 2(j)]</span></label>
+          <input type="text" id="dpCount" placeholder="e.g. ~12,000">
+        </div>
+
+        <div class="f">
+          <label class="lbl" for="dpoName">Data Protection Officer / Authorised Contact <span>[Section 8(9) / Section 10(2)(a)]</span></label>
+          <input type="text" id="dpoName" placeholder="e.g. Priya Sharma, Data Protection Officer">
+        </div>
+
+        <!-- Categories -->
+        <div class="f fc">
+          <label class="lbl">Categories of Personal Data Affected <span>[Section 2(t) — influences statutory risk & penalty under Section 33(2)(b)]</span></label>
+          <div class="cat-wrap">
+            <div class="cat-grid" id="catGrid">
+              <label class="cat-row"><input type="checkbox" value="Name, Email, Phone Number" data-weight="1"><span class="cat-name">Name / Email / Phone</span></label>
+              <label class="cat-row"><input type="checkbox" value="Physical Address" data-weight="1"><span class="cat-name">Physical Address</span></label>
+              <label class="cat-row"><input type="checkbox" value="Financial Data (bank details, cards, transactions)" data-weight="3"><span class="cat-name">Financial Data<span class="cat-flag">High Risk of Loss</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Government Identifiers (Aadhaar, PAN, Passport)" data-weight="3"><span class="cat-name">Govt. IDs (Aadhaar / PAN)<span class="cat-flag">Identity Risk</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Health & Medical Records" data-weight="4"><span class="cat-name">Health / Medical Records<span class="cat-flag">Special Sensitivity</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Biometric Data" data-weight="4"><span class="cat-name">Biometric Data<span class="cat-flag">Irreversible Risk</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Children's Personal Data [Section 9]" data-weight="4"><span class="cat-name">Children's Data (Section 9)<span class="cat-flag">Statutory Aggravation</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Passwords / Login Credentials" data-weight="3"><span class="cat-name">Passwords / Credentials<span class="cat-flag">Systemic Risk</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Location / GPS Data" data-weight="2"><span class="cat-name">Location / GPS Data</span></label>
+              <label class="cat-row"><input type="checkbox" value="Caste, Religion, or Political Views" data-weight="4"><span class="cat-name">Caste / Religion / Beliefs<span class="cat-flag">Special Sensitivity</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Sexual Orientation or Gender Identity" data-weight="4"><span class="cat-name">Sexual Orientation<span class="cat-flag">Special Sensitivity</span></span></label>
+              <label class="cat-row"><input type="checkbox" value="Browsing / Behavioural Data" data-weight="1"><span class="cat-name">Browsing / Behavioural</span></label>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" onclick="startTimer()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Start Timer
+        </button>
+        <button class="btn btn-secondary" onclick="saveToHistory()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/></svg>
+          Save Incident
+        </button>
+        <button class="btn btn-ghost" onclick="resetAll()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS -->
+  <div class="sts-strip" id="stsStrip">
+    <div class="sts-dot" id="stsDot"></div>
+    <div class="sts-text">
+      <div class="sts-label" id="stsLabel">—</div>
+      <div class="sts-sub"   id="stsSub">—</div>
+    </div>
+  </div>
+
+  <!-- 2. SEVERITY -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-title">Breach Gravity Assessment</span>
+      <span class="sec-cite">Section 33(2)(a) &amp; (b)</span>
+    </div>
+    <div class="sev-wrap" id="sevWrap">
+      <div class="sev-top">
+        <span class="sev-label-sm">Statutory risk &amp; gravity evaluation</span>
+        <span class="sev-pill" id="sevPill">—</span>
+      </div>
+      <div class="sev-bar-bg">
+        <div class="sev-bar-fg" id="sevBarFg"></div>
+      </div>
+      <div class="sev-tags" id="sevTags"></div>
+    </div>
+  </div>
+
+  <!-- 3. DEADLINES -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-title">Statutory Timelines for Intimation</span>
+      <span class="sec-cite">Section 8(6) · Rule 7</span>
+    </div>
+    <div class="dl-grid">
+
+      <!-- Obligation 1 -->
+      <div class="dl-card" id="dlCard1">
+        <div class="dl-seq">Statutory Duty 1</div>
+        <div class="dl-title">Intimation to Affected Data Principals</div>
+        <div class="dl-rule">Section 8(6) · Without Undue Delay</div>
+        <div class="dl-count" id="cd1">––:––:––</div>
+        <div class="dl-by"    id="due1">Enter discovery time to begin</div>
+        <div class="dl-stat-note">
+          <strong>Mandate:</strong> Section 8(6) requires intimation of breach to <em>each affected Data Principal</em> to enable self-protective measures against identity fraud and financial loss.
+        </div>
+      </div>
+
+      <!-- Obligation 2 -->
+      <div class="dl-card" id="dlCard2">
+        <div class="dl-seq">Statutory Duty 2</div>
+        <div class="dl-title">Intimation to Data Protection Board</div>
+        <div class="dl-rule">Section 8(6) read with Rule 7 · 72 Hours</div>
+        <div class="dl-count" id="cd2">––:––:––</div>
+        <div class="dl-by"    id="due2">Enter discovery time to begin</div>
+        <div class="dl-stat-note">
+          <strong>Mandate:</strong> Formal intimation under Section 8(6) and Section 40(2)(f) enabling the Board to direct urgent remedial or mitigation measures under Section 27(1)(a).
+        </div>
+      </div>
+
+    </div>
+
+    <div class="callout" id="ruleNote" style="display:none">
+      <span class="callout-icon">⚖</span>
+      <span class="callout-text">
+        <strong>Statutory Note on Enforcement:</strong> While the substantive provisions of the Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023) received Presidential assent on 11 August 2023, procedural Rule 7 comes into phased enforcement per central notifications. Organisations are strictly advised to establish internal technical safeguards under <strong>Section 8(4) &amp; 8(5)</strong> immediately to avoid penalty exposure under <strong>The Schedule, Item 1 &amp; 2</strong>.
+      </span>
+    </div>
+  </div>
+
+  <!-- 4. FULL STATUTORY PROVISIONS ACCORDION -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-title">Verbatim Statutory Provisions</span>
+      <span class="sec-cite">Act No. 22 of 2023</span>
+    </div>
+    <div class="accordion">
+      <div class="acc-head" id="statHead" onclick="toggleAcc('statBody','statHead')">
+        <div>
+          <div class="acc-h-title">Bare Act Text — Sections 2(u), 8(4), 8(5), 8(6), 27(1) &amp; 33</div>
+          <div class="acc-h-sub">Click to expand the verbatim provisions enacted by Parliament (Gazette of India, 11 August 2023)</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="acc-body" id="statBody">
+        <div style="padding:18px 20px;">
+
+          <!-- Section 2(u) -->
+          <div class="stat-box">
+            <div class="stat-box-title">Section 2(u) — Definition of "Personal Data Breach"</div>
+            <div class="stat-box-text">
+              "personal data breach" means any unauthorised processing of personal data or accidental disclosure, acquisition, sharing, use, alteration, destruction or loss of access to personal data, that compromises the confidentiality, integrity or availability of personal data;
+            </div>
+          </div>
+
+          <!-- Section 8(4) -->
+          <div class="stat-box">
+            <div class="stat-box-title">Section 8(4) — Technical and Organisational Measures</div>
+            <div class="stat-box-text">
+              A Data Fiduciary shall implement appropriate technical and organisational measures to ensure effective observance of the provisions of this Act and the rules made thereunder.
+            </div>
+          </div>
+
+          <!-- Section 8(5) -->
+          <div class="stat-box">
+            <div class="stat-box-title">Section 8(5) — Reasonable Security Safeguards</div>
+            <div class="stat-box-text">
+              A Data Fiduciary shall protect personal data in its possession or under its control, including in respect of any processing undertaken by it or on its behalf by a Data Processor, by taking reasonable security safeguards to prevent personal data breach.
+            </div>
+          </div>
+
+          <!-- Section 8(6) -->
+          <div class="stat-box">
+            <div class="stat-box-title">Section 8(6) — Intimation of Breach to Board and Data Principals</div>
+            <div class="stat-box-text">
+              In the event of a personal data breach, the Data Fiduciary shall give the Board and each affected Data Principal, intimation of such breach in such form and manner as may be prescribed.
+            </div>
+          </div>
+
+          <!-- Section 27(1)(a) -->
+          <div class="stat-box">
+            <div class="stat-box-title">Section 27(1)(a) — Powers of the Board on Intimation of Breach</div>
+            <div class="stat-box-text">
+              The Board shall exercise and perform the following powers and functions, namely:— (a) on receipt of an intimation of personal data breach under sub-section (6) of section 8, to direct any urgent remedial or mitigation measures in the event of a personal data breach, and to inquire into such personal data breach and impose penalty as provided in this Act;
+            </div>
+          </div>
+
+          <!-- Section 33(1) -->
+          <div class="stat-box">
+            <div class="stat-box-title">Section 33(1) — Imposition of Monetary Penalty</div>
+            <div class="stat-box-text">
+              If the Board determines on conclusion of an inquiry that breach of the provisions of this Act or the rules made thereunder by a person is significant, it may, after giving the person an opportunity of being heard, impose such monetary penalty specified in the Schedule.
+            </div>
+          </div>
+
+          <!-- Section 33(2) -->
+          <div class="stat-box">
+            <div class="stat-box-title">Section 33(2) — Statutory Factors for Determining Penalty Amounts</div>
+            <div class="stat-box-text">
+              While determining the amount of monetary penalty to be imposed under sub-section (1), the Board shall have regard to the following matters, namely:—
+              <br>(a) the nature, gravity and duration of the breach;
+              <br>(b) the type and nature of the personal data affected by the breach;
+              <br>(c) repetitive nature of the breach;
+              <br>(d) whether the person, as a result of the breach, has realised a gain or avoided any loss;
+              <br>(e) whether the person took any action to mitigate the effects and consequences of the breach, and the timeliness and effectiveness of such action;
+              <br>(f) whether the monetary penalty to be imposed is proportionate and effective, having regard to the need to secure observance of and deter breach of the provisions of this Act; and
+              <br>(g) the likely impact of the imposition of the monetary penalty on the person.
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. STATUTORY PENALTY SCHEDULE -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-title">Statutory Penalties Under The Schedule</span>
+      <span class="sec-cite">THE SCHEDULE [See section 33(1)]</span>
+    </div>
+    <div class="accordion">
+      <div class="acc-head" id="penHead" onclick="toggleAcc('penBody','penHead')">
+        <div>
+          <div class="acc-h-title">The Schedule [See Section 33(1)] — Verbatim Penalty Schedule</div>
+          <div class="acc-h-sub">Penalties prescribed by Parliament under Act No. 22 of 2023 for contraventions</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="acc-body" id="penBody">
+        <table class="pen-table">
+          <thead>
+            <tr>
+              <th>Sl. No.</th>
+              <th>Breach of Provisions of this Act or Rules Made Thereunder</th>
+              <th>Enabling Section</th>
+              <th>Maximum Penalty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="pen-sl">1.</td>
+              <td>Breach in observing the obligation of Data Fiduciary to take reasonable security safeguards to prevent personal data breach under sub-section (5) of section 8.</td>
+              <td class="pen-sec">Section 8(5)</td>
+              <td class="pen-amount">May extend to ₹250 Crore</td>
+            </tr>
+            <tr>
+              <td class="pen-sl">2.</td>
+              <td>Breach in observing the obligation to give the Board or affected Data Principal notice of a personal data breach under sub-section (6) of section 8.</td>
+              <td class="pen-sec">Section 8(6)</td>
+              <td class="pen-amount">May extend to ₹200 Crore</td>
+            </tr>
+            <tr>
+              <td class="pen-sl">3.</td>
+              <td>Breach in observance of additional obligations in relation to children under section 9.</td>
+              <td class="pen-sec">Section 9</td>
+              <td class="pen-amount">May extend to ₹200 Crore</td>
+            </tr>
+            <tr>
+              <td class="pen-sl">4.</td>
+              <td>Breach in observance of additional obligations of Significant Data Fiduciary under section 10.</td>
+              <td class="pen-sec">Section 10</td>
+              <td class="pen-amount">May extend to ₹150 Crore</td>
+            </tr>
+            <tr>
+              <td class="pen-sl">5.</td>
+              <td>Breach in observance of the duties under section 15.</td>
+              <td class="pen-sec">Section 15</td>
+              <td class="pen-amount">May extend to ₹10,000</td>
+            </tr>
+            <tr>
+              <td class="pen-sl">6.</td>
+              <td>Breach of any term of voluntary undertaking accepted by the Board under section 32.</td>
+              <td class="pen-sec">Section 32</td>
+              <td class="pen-amount" style="font-size:11.5px;color:var(--t1);">Up to extent applicable under Section 28</td>
+            </tr>
+            <tr>
+              <td class="pen-sl">7.</td>
+              <td>Breach of any other provision of this Act or the rules made thereunder.</td>
+              <td class="pen-sec">Residual</td>
+              <td class="pen-amount">May extend to ₹50 Crore</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="s33-factors">
+          <div class="s33-title">Statutory Guidance: Mitigating Liability Under Section 33(2)(e)</div>
+          <div class="s33-list">
+            Section 33(2)(e) requires the Board to consider <em>"whether the person took any action to mitigate the effects and consequences of the breach, and the timeliness and effectiveness of such action."</em> Immediate containment and timely statutory intimation are direct statutory mitigating factors.
+          </div>
+        </div>
+
+        <div class="dpbi" style="padding:14px 18px;background:var(--bg);border-top:1px solid var(--bd);">
+          <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);margin-bottom:6px;">Data Protection Board of India [Section 18]</div>
+          <div style="font-size:12px;color:var(--t2);margin-bottom:3px;">🌐 Portal: <a href="https://dpboard.gov.in" target="_blank" rel="noopener" style="color:var(--blue);text-decoration:none;">dpboard.gov.in</a></div>
+          <div style="font-size:12px;color:var(--t2);margin-bottom:3px;">📧 Grievance &amp; Intimation: <a href="mailto:grievance-dpb@meity.gov.in" style="color:var(--blue);text-decoration:none;">grievance-dpb@meity.gov.in</a></div>
+          <div style="font-size:11px;color:var(--t3);margin-top:6px;">Section 28(1) mandates the Board to function as an independent body and digital office by design.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. RESPONSE CHECKLIST -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-title">Statutory Incident Response Workflow</span>
+      <span class="sec-cite">Sections 8(4), 8(5), 8(6), 8(7) &amp; 27(1)(a)</span>
+    </div>
+    <div class="prog">
+      <div class="prog-bar"><div class="prog-fill" id="progFill"></div></div>
+      <div class="prog-lbl" id="progLbl">0 of 5 steps completed — click any step to mark done</div>
+    </div>
+    <div class="cl">
+
+      <!-- Step 1 -->
+      <div class="cl-row" id="step1" onclick="toggleStep(1)">
+        <div class="cl-box"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="cl-body">
+          <div class="cl-title">1. Contain Breach &amp; Implement Reasonable Security Safeguards</div>
+          <div class="cl-desc">Verify incident authenticity. Isolate compromised systems, revoke credentials, and preserve forensically sound audit logs to prove compliance with statutory safeguard obligations.</div>
+          <div class="cl-prov">Full Provision — Section 8(5): "A Data Fiduciary shall protect personal data in its possession or under its control, including in respect of any processing undertaken by it or on its behalf by a Data Processor, by taking reasonable security safeguards to prevent personal data breach."</div>
+          <div class="cl-meta">
+            <span class="tag">Section 8(5)</span>
+            <span class="tag">Section 8(4)</span>
+            <span class="tag">Immediate</span>
+            <span class="cl-ts" id="ts1"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="cl-row" id="step2" onclick="toggleStep(2)">
+        <div class="cl-box"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="cl-body">
+          <div class="cl-title">2. Assess Compromise to Confidentiality, Integrity or Availability</div>
+          <div class="cl-desc">Quantify the scope of the breach against the statutory threshold. Ascertain categories of personal data, volume of affected Data Principals, and potential risks of harm or financial loss.</div>
+          <div class="cl-prov">Full Provision — Section 2(u): "'personal data breach' means any unauthorised processing of personal data or accidental disclosure, acquisition, sharing, use, alteration, destruction or loss of access to personal data, that compromises the confidentiality, integrity or availability of personal data;"</div>
+          <div class="cl-meta">
+            <span class="tag">Section 2(u)</span>
+            <span class="tag">Section 33(2)(a)-(b)</span>
+            <span class="tag">Triage Stage</span>
+            <span class="cl-ts" id="ts2"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="cl-row" id="step3" onclick="toggleStep(3)">
+        <div class="cl-box"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="cl-body">
+          <div class="cl-title">3. Give Intimation to Each Affected Data Principal</div>
+          <div class="cl-desc">Dispatch clear, plain-language breach notices to every impacted individual informing them of the incident, data involved, remedial steps taken, and self-protective actions.</div>
+          <div class="cl-prov">Full Provision — Section 8(6): "In the event of a personal data breach, the Data Fiduciary shall give the Board and each affected Data Principal, intimation of such breach in such form and manner as may be prescribed."</div>
+          <div class="cl-meta">
+            <span class="tag">Section 8(6)</span>
+            <span class="tag">Without Undue Delay</span>
+            <span class="cl-ts" id="ts3"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="cl-row" id="step4" onclick="toggleStep(4)">
+        <div class="cl-box"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="cl-body">
+          <div class="cl-title">4. Give Intimation to the Data Protection Board of India</div>
+          <div class="cl-desc">Submit formal regulatory intimation within the prescribed 72-hour window, detailing the breach nature, volume, consequences, containment status, and DPO particulars.</div>
+          <div class="cl-prov">Full Provision — Section 8(6) read with Section 27(1)(a) &amp; Rule 7: Intimation of personal data breach to the Board enables the Board to "direct any urgent remedial or mitigation measures... and to inquire into such personal data breach and impose penalty".</div>
+          <div class="cl-meta">
+            <span class="tag">Section 8(6)</span>
+            <span class="tag">Section 27(1)(a)</span>
+            <span class="tag">Rule 7 (72-Hour Rule)</span>
+            <span class="cl-ts" id="ts4"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="cl-row" id="step5" onclick="toggleStep(5)">
+        <div class="cl-box"><svg viewBox="0 0 12 12" fill="none" stroke-linecap="round" stroke-linejoin="round"><polyline points="2 6 5 9 10 3"/></svg></div>
+        <div class="cl-body">
+          <div class="cl-title">5. Implement Post-Breach Remediation, Audit &amp; Data Erasure</div>
+          <div class="cl-desc">Execute root cause fixes, close architectural vulnerabilities, enforce data erasure under Section 8(7) where purpose has ceased, and preserve documentation for inquiry defense.</div>
+          <div class="cl-prov">Full Provision — Section 8(7) &amp; Section 33(2)(e): Obligation to erase personal data when purpose is served, and statutory mitigation of penalty through timely and effective corrective action.</div>
+          <div class="cl-meta">
+            <span class="tag">Section 8(7)</span>
+            <span class="tag">Section 33(2)(e)</span>
+            <span class="tag">Post-Incident Review</span>
+            <span class="cl-ts" id="ts5"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 7. HISTORY -->
+  <div class="sec">
+    <div class="sec-h"><span class="sec-title">Incident History Log</span></div>
+    <div class="hist-bar">
+      <span class="hist-count">Saved incidents: <strong id="histCount">0</strong></span>
+      <button class="btn btn-ghost btn-xs" onclick="toggleHist()">View History</button>
+    </div>
+    <div class="hist-list" id="histList">
+      <div class="hist-empty" id="histEmpty">No saved incidents. Fill in the form and click "Save Incident".</div>
+    </div>
+  </div>
+
+  <!-- 8. NOTICES -->
+  <div class="sec">
+    <div class="sec-h">
+      <span class="sec-title">Draft Statutory Notices &amp; Reports</span>
+      <span class="sec-cite">Section 8(6)</span>
+    </div>
+
+    <!-- Notice 1 -->
+    <div class="notice">
+      <div class="notice-head" id="nh1" onclick="toggleNotice('nb1','nh1')">
+        <div>
+          <div class="n-title">Intimation to Affected Data Principals</div>
+          <div class="n-sub">Issued pursuant to Section 8, Sub-section (6), DPDP Act, 2023</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="notice-body" id="nb1">
+        <div class="notice-text" id="nt1">Start the timer above to auto-generate this notice.</div>
+        <div class="notice-foot">
+          <button class="btn btn-secondary btn-xs" onclick="copyText('nt1','Notice')">Copy Notice</button>
+          <button class="btn btn-email-dp btn-xs" onclick="emailNotice(1)">Draft Email</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notice 2 -->
+    <div class="notice">
+      <div class="notice-head" id="nh2" onclick="toggleNotice('nb2','nh2')">
+        <div>
+          <div class="n-title">Intimation of Personal Data Breach to Data Protection Board of India</div>
+          <div class="n-sub">Submitted under Section 8(6) &amp; Section 40(2)(f) read with Rule 7, DPDP Rules</div>
+        </div>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="notice-body" id="nb2">
+        <div class="notice-text" id="nt2">Start the timer above to auto-generate this report.</div>
+        <div class="notice-foot">
+          <button class="btn btn-secondary btn-xs" onclick="copyText('nt2','Report')">Copy Report</button>
+          <button class="btn btn-email-board btn-xs" onclick="emailNotice(2)">Email to DPBI</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /wrap -->
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="f-name">Mohd Faiz · Advocate</div>
+      <div class="f-role">LL.B., Faculty of Law, University of Delhi &nbsp;·&nbsp; Data Privacy Law &amp; AI Governance</div>
+      <div class="f-disc">
+        This tool reflects the statutory framework enacted under The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023, published in the Gazette of India Extraordinary, Part II, Section 1, dated 11 August 2023). For academic, research, and compliance preparedness purposes. Not formal legal advice.
+      </div>
+    </div>
+    <div class="f-links">
+      <a href="https://linkedin.com/in/adv-mohd-faiz" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:faizbvm@gmail.com">faizbvm@gmail.com</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+// ── State ─────────────────────────────────────────────
+let discoveryTime = null;
+let tickInterval  = null;
+let stepTS        = {};
+let history       = [];
+let histOpen      = false;
+
+// ── Boot ──────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  setNow();
+  applyTheme(localStorage.getItem('dpdp_theme') || 'light');
+  loadState();
+  loadHistory();
+  // Live recalc
+  ['change','input'].forEach(ev => {
+    document.getElementById('catGrid').addEventListener(ev, () => { if(discoveryTime) calcSev(); });
+  });
+  document.getElementById('dpCount').addEventListener('input',    () => { if(discoveryTime) calcSev(); });
+  document.getElementById('breachType').addEventListener('change', () => { if(discoveryTime) calcSev(); });
+});
+
+function setNow() {
+  const d = new Date(); d.setSeconds(0,0);
+  document.getElementById('discoveryTime').value = toVal(d);
+}
+
+// ── Theme ─────────────────────────────────────────────
+function toggleTheme() {
+  const t = document.body.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+  applyTheme(t); localStorage.setItem('dpdp_theme', t);
+}
+function applyTheme(t) {
+  document.body.setAttribute('data-theme', t);
+  const icon = document.getElementById('themeIcon');
+  icon.innerHTML = t === 'dark'
+    ? '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor" stroke="none"/>'
+    : `<circle cx="12" cy="12" r="5"/>
+       <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+       <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+       <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+       <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>`;
+}
+
+// ── Timer ─────────────────────────────────────────────
+function startTimer() {
+  const raw = document.getElementById('discoveryTime').value;
+  if (!raw) { toast('Please enter the discovery date and time.'); return; }
+  const t = new Date(raw);
+  if (isNaN(t)) { toast('Invalid date — please check and try again.'); return; }
+  discoveryTime = t;
+  clearInterval(tickInterval);
+  tick(); tickInterval = setInterval(tick, 1000);
+  document.getElementById('ruleNote').style.display = 'flex';
+  calcSev(); saveState();
+  toast('Timer started — statutory deadlines are live.');
+}
+
+function tick() {
+  if (!discoveryTime) return;
+  const now = new Date();
+  const d1  = new Date(discoveryTime.getTime() + 24*3600000);
+  const d2  = new Date(discoveryTime.getTime() + 72*3600000);
+  updCard('dlCard1','cd1','due1', now, d1);
+  updCard('dlCard2','cd2','due2', now, d2);
+  updStatus(now, d2);
+  buildNotices(now);
+}
+
+function updCard(cid,cdid,did,now,dl){
+  const card=document.getElementById(cid);
+  const cd=document.getElementById(cdid);
+  const due=document.getElementById(did);
+  const diff=dl-now;
+  card.className='dl-card';
+  if(diff<=0){
+    cd.textContent='OVERDUE';cd.className='dl-count over';
+    card.classList.add('over');due.textContent='Statutory window passed: '+fmt(dl);
+  } else {
+    const{h,m,s}=hms(diff);
+    cd.textContent=pad(h)+':'+pad(m)+':'+pad(s);
+    due.textContent='Target: '+fmt(dl);
+    if(diff<2*3600000){cd.className='dl-count urgent';card.classList.add('urgent');}
+    else if(diff<12*3600000){cd.className='dl-count warn';card.classList.add('warn');}
+    else{cd.className='dl-count safe';card.classList.add('safe');}
+  }
+}
+
+function updStatus(now,dl2){
+  const bar=document.getElementById('stsStrip');
+  const lbl=document.getElementById('stsLabel');
+  const sub=document.getElementById('stsSub');
+  const dot=document.getElementById('stsDot');
+  const org=document.getElementById('orgName').value||'Unknown Entity';
+  const diff=dl2-now;
+  bar.className='sts-strip show '+(diff<=0?'s-over':'s-live');
+  lbl.textContent=diff<=0?'Section 8(6) 72-Hour Reporting Window Expired':'Section 8(6) Intimation Active — '+org;
+  sub.textContent=diff<=0
+    ?'The 72-hour regulatory window to intimate the Data Protection Board has elapsed. Imposition risk under The Schedule, Item 2 (up to ₹200 Crore).'
+    :left(diff)+' remaining before the 72-hour Data Protection Board intimation is due under Section 8(6) read with Rule 7.';
+  dot.style.background=(diff<=0||diff<12*3600000)?'var(--red)':'var(--blue)';
+}
+
+// ── Severity ──────────────────────────────────────────
+function calcSev(){
+  const cbs=[...document.querySelectorAll('#catGrid input:checked')];
+  const count=document.getElementById('dpCount').value;
+  const bt=document.getElementById('breachType').value;
+  let score=0;const factors=[];
+  cbs.forEach(c=>{score+=parseInt(c.dataset.weight||1);factors.push(c.value.split('(')[0].trim());});
+  const bw={'Ransomware Attack':3,'Insider Threat':3,'Unauthorised Processing':2,'Unauthorised Acquisition':3,'Unauthorised Destruction':3,'Third-Party Processor Breach':2,'Accidental Disclosure':1,'Loss of Access':1,'Unauthorised Alteration':2,'Other':1};
+  if(bt&&bw[bt]){score+=bw[bt];factors.push(bt);}
+  const n=parseInt((count||'0').replace(/\D/g,''))||0;
+  if(n>100000){score+=4;factors.push('100k+ Data Principals affected');}
+  else if(n>10000){score+=3;factors.push('10k+ Data Principals affected');}
+  else if(n>1000){score+=2;factors.push('1k+ Data Principals affected');}
+  else if(n>100){score+=1;factors.push('100+ Data Principals affected');}
+  else if(n>0){factors.push('<100 Data Principals affected');}
+  let lvl,pct,col;
+  if(score>=10){lvl='CRITICAL';pct=100;col='var(--purple)';}
+  else if(score>=7){lvl='HIGH';pct=75;col='var(--red)';}
+  else if(score>=4){lvl='MEDIUM';pct=50;col='var(--amber)';}
+  else{lvl='LOW';pct=25;col='var(--green)';}
+  const lc=lvl[0];
+  const w=document.getElementById('sevWrap');
+  const p=document.getElementById('sevPill');
+  const b=document.getElementById('sevBarFg');
+  const tf=document.getElementById('sevTags');
+  w.className='sev-wrap show '+lc;
+  p.className='sev-pill '+lc;
+  p.textContent=lvl+(score?' · Score '+score:'');
+  b.style.width=pct+'%';b.style.background=col;
+  tf.innerHTML=factors.length?factors.map(f=>`<span class="sev-tag">${f}</span>`).join(''):'<span class="sev-tag">No categories selected</span>';
+}
+
+// ── Notices ───────────────────────────────────────────
+function buildNotices(now){
+  const org=document.getElementById('orgName').value||'[Data Fiduciary Name]';
+  const desc=document.getElementById('breachDesc').value||'[Description of the Personal Data Breach under Section 2(u)]';
+  const count=document.getElementById('dpCount').value||'[Estimated number of affected Data Principals]';
+  const dpo=document.getElementById('dpoName').value||'[Designated Contact Person / DPO under Section 8(9)]';
+  const bt=document.getElementById('breachType').value||'[Nature of breach]';
+  const dl2=new Date(discoveryTime.getTime()+72*3600000);
+  const ot=now<=dl2?'YES — Timely Intimation within statutory 72 hours' : 'NO — Intimation delayed beyond 72 hours; statutory justification detailed in Section D';
+  const cats=[...document.querySelectorAll('#catGrid input:checked')].map(c=>'  • '+c.value).join('\n')||'  • [No categories specified]';
+
+  document.getElementById('nt1').textContent=
+`INTIMATION OF PERSONAL DATA BREACH TO DATA PRINCIPAL
+Issued pursuant to Section 8, Sub-section (6) of The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)
+
+Date: ${fmt(now)}
+To: [Data Principal Name / Recipient]
+
+Dear Data Principal,
+
+We are writing to provide you with formal intimation in compliance with Section 8, Sub-section (6) of the Digital Personal Data Protection Act, 2023, regarding a personal data breach identified in systems maintained by or on behalf of ${org} (acting as Data Fiduciary under Section 2(i) of the Act).
+
+─────────────────────────────────────────────────────────────────────────────
+1. NATURE AND DETAILS OF THE PERSONAL DATA BREACH [Section 2(u)]
+─────────────────────────────────────────────────────────────────────────────
+Date and Time of Discovery : ${fmt(discoveryTime)}
+Nature / Category of Breach : ${bt}
+
+Description:
+${desc}
+
+─────────────────────────────────────────────────────────────────────────────
+2. CATEGORIES OF PERSONAL DATA INVOLVED [Section 2(t)]
+─────────────────────────────────────────────────────────────────────────────
+The following categories of digital personal data were compromised or reasonably believed to be involved:
+${cats}
+
+Estimated number of Data Principals affected across the incident: ${count}
+
+─────────────────────────────────────────────────────────────────────────────
+3. REASONABLE SECURITY SAFEGUARDS & REMEDIAL ACTIONS TAKEN [Section 8(5)]
+─────────────────────────────────────────────────────────────────────────────
+In discharge of our statutory duties, ${org} has taken the following immediate measures:
+  • Isolated compromised network segments and revoked affected system access credentials.
+  • Commenced comprehensive forensic investigations to ascertain root cause.
+  • Formally intimating the Data Protection Board of India pursuant to Section 8(6) of the Act.
+  • Engaged specialized technical and legal counsel to mitigate harm.
+
+─────────────────────────────────────────────────────────────────────────────
+4. RECOMMENDED MEASURES FOR THE DATA PRINCIPAL
+─────────────────────────────────────────────────────────────────────────────
+To mitigate potential adverse consequences, we advise you to:
+  • Remain alert to suspicious or phishing communications claiming to represent ${org}.
+  • Monitor financial accounts and credit statements for any unauthorized transactions.
+  • Update passwords/credentials for accounts where similar login credentials were used.
+
+─────────────────────────────────────────────────────────────────────────────
+5. GRIEVANCE REDRESSAL & CONTACT PARTICULARS [Section 8(9) & Section 13]
+─────────────────────────────────────────────────────────────────────────────
+For inquiries or grievance redressal under Section 13 of the Act, contact:
+  Officer  : ${dpo}
+  Email    : [privacy@organisation.com]
+  Phone    : [+91-XXXXXXXXXX]
+  Address  : [Registered office address of Data Fiduciary]
+
+Yours faithfully,
+For and on behalf of ${org}
+
+[Authorised Signatory / Data Protection Officer]
+Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)`;
+
+  document.getElementById('nt2').textContent=
+`FORMAL INTIMATION OF PERSONAL DATA BREACH TO THE DATA PROTECTION BOARD OF INDIA
+Submitted pursuant to Section 8, Sub-section (6) and Section 40(2)(f) of The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023) read with Rule 7, DPDP Rules
+
+TO   : The Data Protection Board of India
+       New Delhi, India [Section 18]
+FROM : ${org} [Data Fiduciary under Section 2(i)]
+DATE : ${fmt(now)}
+RE   : Mandatory Intimation of Personal Data Breach under Section 8(6)
+
+══════════════════════════════════════════════════════════════════════════════
+
+PART A: PARTICULARS OF THE DATA FIDUCIARY [Section 2(i)]
+
+1. Legal Name of Entity         : ${org}
+2. Corporate Identification No. : [CIN / LLPIN / Registration Number]
+3. Registered Office Address    : [Complete address with Postal PIN Code]
+4. Data Protection Officer (DPO): ${dpo} [Appointed under Section 8(9) / 10(2)(a)]
+5. Direct Contact for Inquiry   : [Official Email Address & Telephone Number]
+
+══════════════════════════════════════════════════════════════════════════════
+
+PART B: DETAILS OF THE PERSONAL DATA BREACH [Section 2(u)]
+
+1. Date and Time of Occurrence (Estimated) : [DD/MM/YYYY HH:MM IST / Under Forensic Investigation]
+2. Date and Time of Discovery by Fiduciary : ${fmt(discoveryTime)}
+3. 72-Hour Statutory Intimation Compliance : ${ot}
+4. Nature of Breach                        : ${bt}
+5. Circumstances / Method of Discovery     : [Internal automated alert / Third-party intimation / Incident response triage]
+
+6. Factual Summary of Breach:
+${desc}
+
+7. Categories of Digital Personal Data Compromised [Section 2(t)]:
+${cats}
+
+8. Approximate Number of Data Principals Affected : ${count}
+9. Containment Status                             : [Fully Contained / Partially Contained / Investigation Active]
+
+══════════════════════════════════════════════════════════════════════════════
+
+PART C: ASSESSMENT OF CONSEQUENCES & IMPACT [Section 33(2)(a)-(b)]
+
+1. Nature and Gravity of Harm Potential : [Assessment of financial loss, identity theft, or reputational impact]
+2. Involvement of Children's Data       : [Confirm whether personal data of children under Section 9 is affected]
+3. Cross-Border / Exfiltration Impact   : [State whether data transfer outside India was observed under Section 16]
+
+══════════════════════════════════════════════════════════════════════════════
+
+PART D: REMEDIAL MEASURES & MITIGATION ACTIONS [Section 8(5) & Section 33(2)(e)]
+
+1. Immediate Containment Measures Taken:
+   (i) Isolated affected server/network infrastructure on ${fmt(discoveryTime)}.
+   (ii) Revoked compromised authentication tokens and implemented perimeter IP blocks.
+   (iii) Preserved forensic image and access logs for regulatory submission.
+
+2. Intimation to Data Principals:
+   [Dispatched / Being dispatched pursuant to Section 8(6) without undue delay]
+
+3. Corrective Measures Planned to Prevent Recurrence:
+   (i) Comprehensive code audit and endpoint remediation.
+   (ii) Re-evaluation of Data Processor contracts under Section 8(2).
+   (iii) Review of technical and organisational safeguards under Section 8(4).
+
+4. Justification for Delay (if filed beyond 72 hours):
+   [If applicable, state reasons why technical intimation could not be completed earlier]
+
+══════════════════════════════════════════════════════════════════════════════
+
+PART E: VERIFICATION AND STATUTORY DECLARATION
+
+I, the undersigned authorised representative of ${org}, do hereby solemnly verify and declare that the contents of this intimation are true and correct to the best of my knowledge, information, and belief, and that no material particulars have been suppressed. The Data Fiduciary stands ready to assist the Board in discharging its functions under Section 27(1)(a) of the Act.
+
+Signature  : ____________________________________________________
+Name       : [Authorised Signatory Name]
+Designation: [Director / Company Secretary / Data Protection Officer]
+Place      : [City, State]
+Date       : ${fmt(now)}
+
+Submitted under Section 8(6) of The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023).`;
+}
+
+// ── Email ─────────────────────────────────────────────
+function emailNotice(n){
+  const text=document.getElementById('nt'+n).textContent;
+  if(text.startsWith('Start')){toast('Start the timer first.');return;}
+  const org=document.getElementById('orgName').value||'[Data Fiduciary]';
+  const sub=n===1
+    ?encodeURIComponent('Section 8(6) DPDP Intimation: Personal Data Breach — '+org)
+    :encodeURIComponent('Section 8(6) Statutory Intimation of Personal Data Breach — '+org);
+  const to=n===2?'grievance-dpb@meity.gov.in':'';
+  window.location.href=`mailto:${to}?subject=${sub}&body=${encodeURIComponent(text.substring(0,1800))}`;
+  toast(n===2?'Opening email to Data Protection Board...':'Opening email draft...');
+}
+
+// ── Checklist ─────────────────────────────────────────
+function toggleStep(n){
+  const el=document.getElementById('step'+n);
+  if(el.classList.contains('done')){
+    el.classList.remove('done');delete stepTS[n];
+    document.getElementById('ts'+n).textContent='';
+  } else {
+    el.classList.add('done');
+    const t=new Date();stepTS[n]=t.toISOString();
+    document.getElementById('ts'+n).textContent='Completed · '+fmtT(t);
+  }
+  updProg();saveState();
+}
+function updProg(){
+  const d=document.querySelectorAll('.cl-row.done').length;
+  document.getElementById('progFill').style.width=(d/5*100)+'%';
+  document.getElementById('progLbl').textContent=d===5?'All 5 statutory steps completed ✓':d+' of 5 statutory steps completed';
+}
+
+// ── Accordions ────────────────────────────────────────
+function toggleAcc(bid,hid){
+  document.getElementById(bid).classList.toggle('open');
+  document.getElementById(hid).classList.toggle('open');
+}
+function toggleNotice(bid,hid){
+  document.getElementById(bid).classList.toggle('open');
+  document.getElementById(hid).classList.toggle('open');
+}
+
+// ── History ───────────────────────────────────────────
+function saveToHistory(){
+  const org=document.getElementById('orgName').value;
+  const disc=document.getElementById('discoveryTime').value;
+  if(!org&&!disc){toast('Enter at least an organisation name before saving.');return;}
+  const sevT=document.getElementById('sevPill').textContent||'—';
+  const lc=sevT[0]||'L';
+  const entry={
+    id:Date.now(),
+    org:org||'[Unnamed Fiduciary]',
+    btype:document.getElementById('breachType').value,
+    disc,count:document.getElementById('dpCount').value,
+    desc:document.getElementById('breachDesc').value,
+    lc,saved:new Date().toISOString()
+  };
+  history.unshift(entry);
+  if(history.length>20)history.pop();
+  localStorage.setItem('dpdp_hist',JSON.stringify(history));
+  renderHistory();toast('Incident saved to history log.');
+}
+function loadHistory(){
+  try{history=JSON.parse(localStorage.getItem('dpdp_hist')||'[]');}catch(e){history=[];}
+  renderHistory();
+}
+function renderHistory(){
+  const list=document.getElementById('histList');
+  const empty=document.getElementById('histEmpty');
+  document.getElementById('histCount').textContent=history.length;
+  if(!history.length){list.innerHTML='';list.appendChild(empty);return;}
+  list.innerHTML=history.map(h=>`
+    <div class="hist-row" onclick="loadHist(${h.id})">
+      <div>
+        <div class="hist-name">${h.org}</div>
+        <div class="hist-meta">${h.btype||'Type not specified'} · ${h.disc?fmt(new Date(h.disc)):'—'}</div>
+      </div>
+      <div class="hist-right">
+        <span class="h-pill ${h.lc}">${{L:'LOW',M:'MEDIUM',H:'HIGH',C:'CRITICAL'}[h.lc]||'—'}</span>
+        <button class="h-del" onclick="delHist(event,${h.id})" title="Delete">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+        </button>
+      </div>
+    </div>`).join('');
+}
+function loadHist(id){
+  const h=history.find(x=>x.id===id);if(!h)return;
+  document.getElementById('orgName').value=h.org;
+  document.getElementById('breachType').value=h.btype||'';
+  document.getElementById('breachDesc').value=h.desc||'';
+  document.getElementById('dpCount').value=h.count||'';
+  if(h.disc)document.getElementById('discoveryTime').value=h.disc;
+  startTimer();toast('Loaded: '+h.org);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function delHist(e,id){
+  e.stopPropagation();
+  history=history.filter(x=>x.id!==id);
+  localStorage.setItem('dpdp_hist',JSON.stringify(history));
+  renderHistory();toast('Removed from history log.');
+}
+function toggleHist(){
+  histOpen=!histOpen;
+  document.getElementById('histList').classList.toggle('open',histOpen);
+}
+
+// ── Copy ──────────────────────────────────────────────
+function copyText(id,lbl){
+  const text=document.getElementById(id).textContent;
+  if(text.startsWith('Start')){toast('Start the timer first.');return;}
+  navigator.clipboard.writeText(text).then(()=>toast(lbl+' copied ✓')).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=text;
+    ta.style.cssText='position:fixed;opacity:0';
+    document.body.appendChild(ta);ta.select();document.execCommand('copy');
+    document.body.removeChild(ta);toast(lbl+' copied ✓');
+  });
+}
+
+// ── Print ─────────────────────────────────────────────
+function printReport(){
+  ['nb1','nb2'].forEach(id=>document.getElementById(id).classList.add('open'));
+  ['nh1','nh2'].forEach(id=>document.getElementById(id).classList.add('open'));
+  document.getElementById('penBody').classList.add('open');
+  document.getElementById('penHead').classList.add('open');
+  document.getElementById('statBody').classList.add('open');
+  document.getElementById('statHead').classList.add('open');
+  setTimeout(()=>window.print(),200);
+  toast('Opening print view...');
+}
+
+// ── Reset ─────────────────────────────────────────────
+function resetAll(){
+  clearInterval(tickInterval);tickInterval=null;discoveryTime=null;stepTS={};
+  ['orgName','breachDesc','dpCount','dpoName'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('breachType').value='';
+  document.querySelectorAll('#catGrid input').forEach(c=>c.checked=false);
+  setNow();
+  ['cd1','cd2'].forEach(id=>{document.getElementById(id).textContent='––:––:––';document.getElementById(id).className='dl-count';});
+  ['due1','due2'].forEach(id=>document.getElementById(id).textContent='Enter discovery time to begin');
+  ['dlCard1','dlCard2'].forEach(id=>document.getElementById(id).className='dl-card');
+  document.getElementById('stsStrip').className='sts-strip';
+  document.getElementById('ruleNote').style.display='none';
+  document.getElementById('sevWrap').className='sev-wrap';
+  [1,2,3,4,5].forEach(n=>{document.getElementById('step'+n).classList.remove('done');document.getElementById('ts'+n).textContent='';});
+  updProg();
+  document.getElementById('nt1').textContent='Start the timer above to auto-generate this notice.';
+  document.getElementById('nt2').textContent='Start the timer above to auto-generate this report.';
+  localStorage.removeItem('dpdp_state');
+  toast('Cleared — ready for a new incident.');
+}
+
+// ── Persist ───────────────────────────────────────────
+function saveState(){
+  const cats=[...document.querySelectorAll('#catGrid input:checked')].map(c=>c.value);
+  localStorage.setItem('dpdp_state',JSON.stringify({
+    discoveryTime:discoveryTime?discoveryTime.toISOString():null,
+    orgName:document.getElementById('orgName').value,
+    breachType:document.getElementById('breachType').value,
+    breachDesc:document.getElementById('breachDesc').value,
+    dpCount:document.getElementById('dpCount').value,
+    dpoName:document.getElementById('dpoName').value,
+    cats,stepTS
+  }));
+}
+function loadState(){
+  try{
+    const s=JSON.parse(localStorage.getItem('dpdp_state')||'null');if(!s)return;
+    ['orgName','breachType','breachDesc','dpCount','dpoName'].forEach(id=>{if(s[id])document.getElementById(id).value=s[id];});
+    if(s.cats&&s.cats.length){
+      document.querySelectorAll('#catGrid input').forEach(cb=>{if(s.cats.includes(cb.value))cb.checked=true;});
+    }
+    if(s.discoveryTime)document.getElementById('discoveryTime').value=toVal(new Date(s.discoveryTime));
+    if(s.stepTS){
+      stepTS=s.stepTS;
+      Object.entries(stepTS).forEach(([n,iso])=>{
+        const el=document.getElementById('step'+n);
+        if(el){el.classList.add('done');document.getElementById('ts'+n).textContent='Completed · '+fmtT(new Date(iso));}
+      });
+      updProg();
+    }
+    if(s.discoveryTime){
+      discoveryTime = new Date(s.discoveryTime);
+      tick();tickInterval=setInterval(tick,1000);
+      calcSev();document.getElementById('ruleNote').style.display='flex';
+    }
+  }catch(e){}
+}
+
+// ── Toast ─────────────────────────────────────────────
+let _tt;
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg;el.classList.add('show');
+  clearTimeout(_tt);_tt=setTimeout(()=>el.classList.remove('show'),2600);
+}
+
+// ── Helpers ───────────────────────────────────────────
+function hms(ms){const s=Math.floor(ms/1000);return{h:Math.floor(s/3600),m:Math.floor((s%3600)/60),s:s%60};}
+function pad(n){return String(n).padStart(2,'0');}
+function fmt(d){return d.toLocaleString('en-IN',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit',hour12:true});}
+function fmtT(d){return d.toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',hour12:true});}
+function toVal(d){const p=n=>String(n).padStart(2,'0');return`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;}
+function left(ms){const{h,m}=hms(ms);return h>0?`${h}h ${m}m`:`${m} minutes`;}
+</script>
+</body>
+</html>
